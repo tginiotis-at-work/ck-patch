@@ -56,7 +56,7 @@ Summary: The Linux kernel
 %global zipsed -e 's/\.ko$/\.ko.xz/'
 %endif
 
-# define buildid .local
+%define buildid .13d534d28
 
 %if 0%{?fedora}
 %define primary_target fedora
@@ -80,7 +80,7 @@ Summary: The Linux kernel
 # For non-released -rc kernels, this will be appended after the rcX and
 # gitX tags, so a 3 here would become part of release "0.rcX.gitX.3"
 #
-%global baserelease 200
+%global baserelease 201
 %global fedora_build %{baserelease}
 
 # base_sublevel is the kernel version we're starting with and patching
@@ -885,6 +885,9 @@ Patch124: 0001-PCI-Add-MCFG-quirks-for-Tegra194-host-controllers.patch
 
 # Work around a bug in gcc https://gcc.gnu.org/bugzilla/show_bug.cgi?id=96377
 Patch126: 0001-Work-around-for-gcc-bug-https-gcc.gnu.org-bugzilla-s.patch
+
+# CK patch
+Patch 901: 0001-ck.patch
 
 # END OF PATCH DEFINITIONS
 
@@ -2990,6 +2993,9 @@ fi
 #
 #
 %changelog
+* Sat Aug 22 2020 Tadas Giniotis <mail@copper.lt> - 5.7.17-201
+- Applying kernel patch by Con Kolivas
+
 * Fri Aug 21 2020 Justin M. Forbes <jforbes@fedoraproject.org> - 5.7.17-200
 - Linux v5.7.17
 
